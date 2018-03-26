@@ -6,7 +6,7 @@
   "scripts": {
     "test": "standard",
     "deploy": "git push origin master && git push origin master --tags",
-    "start": "browser-sync start --proxy 'avcm.localhost' --files 'www' & gulp watch",
+    "start": "browser-sync start --proxy 'fatfreeboots.localhost' --files 'www' & gulp watch",
     "version": "gulp && git add .",
     "pushDev": "git push origin develop"
   },
