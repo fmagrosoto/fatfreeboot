@@ -1,6 +1,6 @@
 {
   "name": "fatfreeboot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plantilla para hacer sitios o aplicaciones web usando Fat Free Framework y Boostrap",
   "main": "index.js",
   "scripts": {
