@@ -8,7 +8,8 @@
     "deploy": "git push origin master && git push origin master --tags",
     "start": "browser-sync start --proxy 'fatfreeboots.localhost' --files 'www' & gulp watch",
     "version": "gulp && git add .",
-    "pushDev": "git push origin develop"
+    "pushDev": "git push origin develop",
+    "phpServer": "php -S localhost:8000 -t www/"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/fmagrosoto/fatfreeboot#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "bootstrap": "^4.0.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.1"
@@ -37,6 +39,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "typescript": "^3.0.3"
   }
 }

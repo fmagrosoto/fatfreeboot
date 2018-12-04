@@ -5,10 +5,12 @@ var uglify = require('gulp-uglify')
 var rename = require('gulp-rename')
 var sass = require('gulp-sass')
 var concat = require('gulp-concat')
+var ts = require('gulp-typescript')
+var tsProject = ts.createProject('tsconfig.json')
 
 var banner = ['/*!\n',
   ' * <%= pkg.description %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
-  ' * Copyright ' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
+  ' * Copyright ' + (new Date()).getFullYear(), '\n',
   ' * Este es otro proyecto de dIGITAE | Fábrica de Soluciones. \n',
   ' * Visítanos: www.digitae.com.mx\n',
   ' */\n\n\n\n\n',
@@ -25,47 +27,39 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('www/css'))
 })
 
-// Minificar archivos javascript, guardarlos en otra carpeta y renombrarlos
-gulp.task('minJS', function () {
-  gulp.src('source/js/*.js')
+// Transpilar archivos Typescript
+gulp.task('type', function () {
+  return tsProject.src()
+    .pipe(tsProject())
     .pipe(uglify())
     .pipe(header(banner, {
       pkg: pkg
     }))
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(gulp.dest('www/js/'))
+    .pipe(gulp.dest('./www/js'))
 })
 
-// Copiar archivos de terceros y pasarlos a los respectivos directorios.
+// Concatenar archivos de Bootstrap.
 // Esta tarea solo se usa una vez y después de hacer npm install
-gulp.task('copy', function () {
-  // jQuery
-  gulp.src(['node_modules/jquery/dist/jquery.min.js'])
-    .pipe(gulp.dest('www/js'))
-
-  // Bootstrap
-  gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js'])
-    .pipe(gulp.dest('www/js'))
-
-  // Popper
-  gulp.src(['node_modules/popper.js/dist/umd/popper.min.js'])
-    .pipe(gulp.dest('www/js'))
-})
-
-// Concatenar archivos de Bootstrap
-// Esta tarea solo se usa una vez y después de hacer npm install
-// OJO Es copy o bundle, una de dos... no las dos.
 gulp.task('bundle', function () {
-  return gulp.src(['./node_modules/jquery/dist/jquery.min.js', './node_modules/popper.js/dist/umd/popper.min.js', './node_modules/bootstrap/dist/js/bootstrap.min.js'])
+  return gulp.src(['./node_modules/jquery/dist/jquery.min.js',
+    './node_modules/popper.js/dist/umd/popper.min.js',
+    './node_modules/bootstrap/dist/js/bootstrap.min.js'])
     .pipe(concat('bundle.js', { newLine: ';' }))
     .pipe(gulp.dest('./www/js'))
 })
 
+// Copiar la carpeta de FONTAWESOME
+gulp.task('awesome', function () {
+  gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/**/*')
+    .pipe(gulp.dest('./www/webfonts'))
+})
+
 // Tarea por default
-gulp.task('default', ['sass', 'minJS'])
+gulp.task('default', ['type', 'sass', 'bundle', 'awesome'])
 
 // Observador
 gulp.task('watch', function () {
-  gulp.watch('source/js/*.js', ['minJS'])
   gulp.watch('source/scss/**/*.scss', ['sass'])
+  gulp.watch('source/ts/**/*.ts', ['type'])
 })

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "removeComments": true,
+    "outDir": "./www/js",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "rootDir": "./source/ts",
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./source/ts/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

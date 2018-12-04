@@ -1,8 +1,8 @@
 # FATFREEBOOT
 
-![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![Packagist](https://img.shields.io/badge/Web-Apache-orange.svg)
-
+![Packagist](https://img.shields.io/badge/Stack-Lamp-yellowgreen.svg)
+![Packagist](https://img.shields.io/badge/TypeScript-True-brightgreen.svg)
+![Packagist](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
@@ -16,7 +16,7 @@ Además incluye **Bootstrap 4**, uno de los fameworks para CSS más importante. 
 
 Para hacer más fácil el diseño de estilos personalizados, se ha agregado Bootstrap por medio de **node**, con esto podemos tener acceso al CSS del bootstrap usando **Saas**.
 
-Y ya que usamos **node** también he hecho un archivo **GULP** para ejecutar tareas, como transpilar SAAS a CSS, minificar archivos JS, etc. Lee el archivo ```gulpfile.js``` para más referencia.
+Y ya que usamos **node** también he hecho un archivo **GULP** para ejecutar tareas, como transpilar SAAS a CSS, transpilar TypeScript a JS, etc. Lee el archivo ```gulpfile.js``` para más referencia.
 
 En modo de desarrollo, debes de tener instalado un servidor web APACHE, PHP y MySQL; agregar el directorio ```www``` a la carpeta que APACHE usa para los archivos web, ej: httdocs y correrlo desde un dominio virtual. Te recomiendo uses [XAMPP](https://www.apachefriends.org/es/index.html) para que puedas instalar un servidor web de manera rápida y confiable.
 
@@ -40,5 +40,5 @@ Por último **y muy importante**, recuerda cambiar tu referencia de GIT ORIGIN h
 * Autor: Fernando Magrosoto V. [@fmagrosoto](https://twitter.com/fmagrosoto)
 * Licencia: [MIT](LICENSE)
 * Tecnología: PHP, HTML5, CSS3, Javascript
-* Frameworks: Fat Free Framework, Bootstrap 4, jQuery
+* Frameworks: Fat Free Framework, Bootstrap 4, jQuery, TypeScript
 
